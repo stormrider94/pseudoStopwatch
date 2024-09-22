@@ -1,0 +1,79 @@
+this is where I type code I don't want to lose but I am likely to edit in 
+my main script 
+
+
+function check_whether_to_update_sec(){
+    if(millisecond_passed > 100){
+        sec_passed = millisecond_passed % 100
+        sec_elem.textContent = sec_passed.toString().padStart(2,"0")
+        millisecond_passed = 0
+        millisec_elem.textContent = millisecond_passed.toString().padStart(2,"0")
+    }else {
+
+        millisec_elem.textContent = millisecond_passed.toString().padStart(2,"0")
+        millisecond_passed ++
+    }
+}
+
+function check_whether_to_update_min(){
+    if(second_passed > 60){
+        min_passed = second_passed % 60
+        min_elem.textContent = min_passed.toString().padStart(2,"0")
+        second_passed = 0
+        sec_elem.textContent = second_passed.toString().padStart(2,"0")
+    }else {
+        sec_elem.textContent = second_passed.toString().padStart(2,"0")
+        second_passed ++
+    }
+}
+
+function check_whether_to_update_hour(){
+    if(min_passed > 60){
+        hour_passed = min_passed % 60
+        hour_elem.textContent = hour_passed.toString().padStart(2,"0")
+        min_passed = 0
+        min_elem.textContent = min_passed.toString().padStart(2,"0")
+    }else {
+        min_elem.textContent = min_passed.toString().padStart(2,"0")
+        min_passed ++
+    }
+}
+
+    let total_time = [0,0,0,0]
+    let current_time = [hour_passed,min_passed,sec_passed,millisecond_passed]
+
+    const new_row = document.createElement('tr')
+    for(let i=0; i<3; i++){
+        let new_data  = document.createElement('td')
+        new_data.textContent = (i+1).toString()
+        new_row.appendChild(new_data)
+        new_data = document.createElement('td')
+        time_str = `${hour_passed.toString().padStart(2,"0")}:` + 
+        `${min_passed.toString().padStart(2,"0")}:` +
+        `${sec_passed.toString().padStart(2,"0")}:` +
+        `${millisecond_passed.toString().padStart(2,"0")}`
+        new_data.textContent = time_str 
+
+        total_time_to_milliseconds = (total_time[0] * 360000) + (total_time[1] * 600) + (total_time[2] * 100) + total_time[3]
+        current_time_to_milliseconds = current_time[0] * 360000 + (current_time[1] * 600) + (current_time[2] * 100) + current_time[3]
+        new_total_time_to_milliseconds = total_time_to_milliseconds + current_time_to_milliseconds
+        
+        for(let i=0; i< total_time.length ; i++){
+            total_time[i] * 
+        }
+        
+    }
+
+    function addLap(){
+    const formattedTime = `${hour_passed.toString().padStart(2,'0')}:${min_passed.toString().padStart(2,'0')}:${sec_passed.toString().padStart(2,'0')}:${millisecond_passed.toString().padStart(2,'0')}`
+    const newRow = document.createElement('tr')
+    const newCell = document.createElement('td')
+    newCell.textContent = formattedTime;
+    newRow.appendChild(newCell)
+    table_body.appendChild(newRow)
+}
+
+    before you try to build your own custom function that implements 
+    some logic, look to see if you can find some form of in built function 
+    that does what you want it to do, otherwise you will waste way more 
+    time than you could have.
